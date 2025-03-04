@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.banner {
+    position: relative;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner .container {
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 3rem;
+}
+
+.banner .highlight {
+    color: #f39c12;
+}
+
+form {
+    margin-top: 1em;
+}
+
+form select, form input, form button {
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #f39c12;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px; 
+    cursor: pointer; 
+    transition: background-color 0.3s;
+}
+
+ button:hover {
+    background-color: #e08e0b;
+}
+
+.recent-properties {
+    padding: 2em 0;
+    background-color: #f8f8f8;
+}
+
+.recent-properties .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.recent-properties h2 {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.property-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5em;
+    justify-items: center;
+}
+
+.property-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.property-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.property-info {
+    padding: 1em;
+    text-align: center;
+}
+
+.property-info h3 {
+    margin: 0.5em 0;
+    font-size: 1.2rem;
+}
+
+.property-info p {
+    margin: 0.5em 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.property-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1em 0;
+    display: flex;
+    gap: 0.5em;
+    justify-content: space-around;
+}
+
+.property-info ul li {
+    background: #f39c12;
+    color: white;
+    padding: 0.5em;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #777;
+    padding: 0 1em 1em;
+}
+
+h2 {
+    color: #f39c12;
+}
+
+#linkstoads{
+    color: #f39c12;    
+}
+
