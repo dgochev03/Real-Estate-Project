@@ -44,12 +44,12 @@ form button {
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
-    font-size: 12px; 
-    cursor: pointer; 
+    font-size: 12px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
- button:hover {
+button:hover {
     background-color: #e08e0b;
 }
 
@@ -133,11 +133,52 @@ form button {
     padding: 0 1em 1em;
 }
 
-h2 {
+.recent-properties h2 {
     color: #f39c12;
 }
 
-#linkstoads{
-    color: #f39c12;    
+#linkstoads {
+    color: #f39c12;
 }
 
+@media (max-width: 768px) {
+    .banner h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    form select, form input, form button {
+        width: 100%;
+        margin: 0.5em 0;
+    }
+
+    .property-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .property-item {
+        max-width: 100%;
+    }
+
+    .property-info ul {
+        flex-direction: column;
+    }
+
+    .property-info ul li {
+        margin: 0.2em 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner h1 {
+        font-size: 1.5rem;
+    }
+
+    .property-list {
+        grid-template-columns: 1fr;
+    }
+}
