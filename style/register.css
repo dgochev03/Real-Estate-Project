@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+.login-body {
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginbox {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.loginbox h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.loginbox p {
+    color: #333;
+}
+
+.loginbox input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.loginbox button {
+    width: 106%;
+    padding: 10px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.loginbox button:hover {
+    background-color: #e68a00;
+}
+
+.login-or {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.login-or .or-line {
+    border-top: 1px solid #ddd;
+    width: 40%;
+    margin: auto;
+}
+
+.login-or .span-or {
+    display: inline-block;
+    padding: 0 10px;
+    color: #333;
+}
+
+.register-link {
+    text-align: center;
+    color: #f39c12;
+}
+
+.register-link a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+    color: #e68a00;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    margin-right: 20px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.alert-warning {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+.password-container {
+    position: relative;
+}
+.password-requirements {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}

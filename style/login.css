@@ -1,0 +1,49 @@
+.btn-custom {
+    background-color: #f39c12;
+    border-color: #f39c12;
+    color: white;
+}
+.btn-custom:hover {
+    background-color: #333;
+    border-color: #333;
+}
+.alternative a {
+    color: #f39c12;
+}
+
+.login-box h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login-box button {
+    width: 106%;
+    padding: 10px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.register-link a, .forgot-password a {
+    color: #f39c12;
+}
+.register-link a:hover, .forgot-password a:hover {
+    color: #e67e22;
+}
+
+.container p{
+    margin: 20px;
+}

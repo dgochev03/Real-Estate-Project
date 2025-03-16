@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include("config.php");
 $error = "";
@@ -18,10 +18,10 @@ if (isset($_REQUEST['login'])) {
             $_SESSION['uemail'] = $email;
             header("location:index.php");
         } else {
-            $error = "<p class='alert-warning'>Login Not Successfully</p>";
+            $error = "<div class='alert alert-warning'>Login Not Successfully</div>";
         }
     } else {
-        $error = "<p class='alert-warning'>Please fill all the fields</p>";
+        $error = "<div class='alert alert-warning'>Please fill all the fields</div>";
     }
 }
 ?>
@@ -29,36 +29,60 @@ if (isset($_REQUEST['login'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/logo/logo-house.svg">
-    <title>Real Estate Portal</title>
-    <link rel="stylesheet" href="style/login.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/logo/logo-house.svg">
+        <title>Real Estate Portal</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style/login.css">
+    </head>
 
-<body>
+    <body>
 
-    <?php include("include/header.php"); ?>
+        <?php include("include/header.php"); ?>
 
-    <div class="login-container">
-        <div class="login-box">
-            <h1>Login</h1>
-            <?php echo $error; ?><?php echo $msg; ?>
+        <div class="container mb-5">
+            <?php
+            if (isset($_SESSION['login_message'])) {
+                echo "<p class='alert alert-warning'>" . $_SESSION['login_message'] . "</p>";
+                unset($_SESSION['login_message']);
+            }
+            ?>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-box p-4 mt-5 bg-white rounded shadow">
+                        <h1 class="text-center mb-4">Login</h1>
+                        <?php echo $error; ?><?php echo $msg; ?>
 
-            <form method="post">
-                <input type="email" name="email" placeholder="Your Email" required>
-                <input type="password" name="pass" placeholder="Your Password" required>
-                <button type="submit" name="login">Login</button>
-            </form>
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="pass" class="form-control" placeholder="Your Password" required>
+                            </div>
+                            <button type="submit" name="login" class="btn btn-custom btn-block">Login</button>
+                        </form>
 
-            <div class="alternative">
-                <span>or</span>
+                        <div class="alternative text-center my-3">
+                            <span>or</span>
+                        </div>
+                        <div class="register-link text-center">
+                            Don't have an account? <a href="register.php">Register</a>
+                        </div>
+                        <div class="register-link text-center">
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="register-link">Don't have an account? <a href="register.php">Register</a></div>
         </div>
-    </div>
 
-    <?php include("include/footer.php"); ?>
-</body>
+<?php include("include/footer.php"); ?>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
 </html>
