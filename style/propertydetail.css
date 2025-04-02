@@ -1,0 +1,140 @@
+#page-wrapper {
+    margin: 0 auto;
+    background-color: #f4f4f4;
+
+}
+
+h4, h5 {
+    color: #333;
+}
+
+h5 {
+    font-size: 24px;
+    margin-top: 20px;
+    padding: 7px;
+}
+
+p {
+    color: #666;
+}
+
+.property-details {
+    padding: 20px;
+    background-color: #f4f4f4;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.property-details h4 {
+    margin-top: 30px;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f39c12;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.property-images {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.slide {
+    flex: 1 1 18%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px; 
+}
+
+.property-images .slide {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.property-images img {
+    width: 100%;
+    height: auto;
+    border: 2px solid #f39c12;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+table td:first-child {
+    font-weight: bold;
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.main-info {
+    color: black;
+    font-size: 20px;
+}
+
+.agent {
+    margin-top: 30px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.agent h6 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.agent p {
+    margin: 5px 0 0;
+    color: #ccc;
+}
+
+i {
+    color: #f39c12;
+}
+
+@media (max-width: 768px) {
+    .property-images {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .slide {
+        flex: 1 1 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+
+    .slide img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px; 
+    }
+    .slide {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
