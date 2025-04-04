@@ -71,9 +71,6 @@ if (isset($_REQUEST['login'])) {
                         <div class="register-link text-center">
                             Don't have an account? <a href="register.php">Register</a>
                         </div>
-                        <div class="register-link text-center">
-                            <a href="#">Forgot Password?</a>
-                        </div>
                     </div>
                 </div>
             </div>
