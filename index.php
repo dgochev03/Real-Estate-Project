@@ -13,7 +13,20 @@ include("config.php");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" href="images/logo/logo-house.svg">
         <title>Real Estate Portal</title>
+        <script>
+            function redirectToPropertyPage() {
+                var propertyType = document.querySelector('select[name="property_type"]').value;
+                var type = document.querySelector('select[name="type"]').value;
+                var city = document.querySelector('input[name="city"]').value;
 
+                propertyType = propertyType || 'apartment';
+                type = type || 'rent';
+                city = city || 'Burgas';
+
+                window.location.href = `property.php?property_type=${propertyType}&type=${type}&city=${city}&search=`;
+                sessionStorage.setItem('autoClickFilter', 'true');
+            }
+        </script>
     </head>
     <body>
         <?php include("include/header.php"); ?>
@@ -45,7 +58,33 @@ include("config.php");
         </section>
 
         <section class="recent-properties">
+            <div class="container">
+                <h2>Recent Property</h2>
+                <div class="property-list">
+                    <?php
+                    $query = mysqli_query($con, "SELECT property.*, user.uname, user.utype FROM property, user WHERE property.uid = user.uid ORDER BY date DESC LIMIT 9");
+                    while ($row = mysqli_fetch_array($query)) {
+                        ?>
 
+                        <article class="property-item">
+                            <img src="images/property/<?php echo $row['12']; ?>" alt="property image">
+                            <div class="property-info">
+                                <h3><a id="linkstoads" href="propertydetail.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h3>
+                                <p><?php echo $row['11']; ?></p>
+                                <ul>
+                                    <li> For <?php echo $row['5']; ?></li>
+                                    <li><?php echo $row['8']; ?> Sq.m.</li>
+                                    <li><?php echo $row['7']; ?> Floor</li>
+                                </ul>
+                                <div class="meta">
+                                    <span>By: <?php echo $row['uname']; ?></span>
+                                    <span><?php echo $row['9']; ?>  EUR</span>
+                                </div>
+                            </div>
+                        </article>
+                    <?php } ?>
+                </div>
+            </div>
         </section>
         <?php include("include/footer.php"); ?>
     </body>
