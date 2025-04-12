@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.text-secondary a{
+    color: #f39c12;
+    size: 20px;
+}
+
+.title {
+    padding: 20px;
+    color: #f39c12;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #f39c12;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table img {
+    display: block;
+    margin: 0 auto;
+}
+
+.table .btn {
+    display: inline-block;
+    margin: 0 auto; 
+}
+
+.table td, 
+.table th {
+    vertical-align: middle !important;
+}
+
+
+@media (max-width: 768px) {
+    thead {
+        display: none;
+    }
+}
