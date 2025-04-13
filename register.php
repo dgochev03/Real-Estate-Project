@@ -11,7 +11,29 @@ if (isset($_REQUEST['reg'])) {
     $pass = trim($_REQUEST['pass']);
     $utype = $_REQUEST['utype'];
 
-    if (!empty($name) && !empty($email) && !empty($phone) && !empty($pass) && strlen($pass) > 6) {
+    $valid = true;
+    
+    if (!preg_match("/^[a-zA-Z ]{2,50}$/", $name)) {
+        $error .= "<div class='alert alert-warning'>Name must be 2-50 characters long and contain only letters and spaces.</div>";
+        $valid = false;
+    }
+    
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error .= "<div class='alert alert-warning'>Please enter a valid email address.</div>";
+        $valid = false;
+    }
+    
+    if (!preg_match("/^[0-9]{10}$/", $phone)) {
+        $error .= "<div class='alert alert-warning'>Phone number must be 10 digits long and contain only numbers.</div>";
+        $valid = false;
+    }
+    
+    if (strlen($pass) < 6 || !preg_match("/[A-Za-z]/", $pass) || !preg_match("/[0-9]/", $pass)) {
+        $error .= "<div class='alert alert-warning'>Password must be at least 6 characters long and contain both letters and numbers.</div>";
+        $valid = false;
+    }
+
+    if ($valid) {
         $sql = "SELECT * FROM user WHERE uemail = ?";
         $stmt = mysqli_prepare($con, $sql);
         mysqli_stmt_bind_param($stmt, "s", $email);
@@ -19,20 +41,19 @@ if (isset($_REQUEST['reg'])) {
         $result = mysqli_stmt_get_result($stmt);
 
         if (mysqli_num_rows($result) > 0) {
-            $error = "<div class='alert alert-warning'>Email already exists.</div>";
+            $error .= "<div class='alert alert-warning'>Email already exists.</div>";
         } else {
+            
             $sql = "INSERT INTO user (uname, uemail, uphone, upass, utype) VALUES (?, ?, ?, ?, ?)";
             $stmt = mysqli_prepare($con, $sql);
             mysqli_stmt_bind_param($stmt, "sssss", $name, $email, $phone, $pass, $utype);
             if (mysqli_stmt_execute($stmt)) {
                 $msg = "<div class='alert alert-success'>Registered successfully.</div>";
             } else {
-                $error = "<div class='alert alert-warning'>Registration failed. Please try again.</div>";
+                $error .= "<div class='alert alert-warning'>Registration failed. Please try again.</div>";
             }
         }
         mysqli_stmt_close($stmt);
-    } else {
-        $error = "<div class='alert alert-warning'>Please fill in all fields correctly. Password must be more than 6 chars.</div>";
     }
 }
 ?>

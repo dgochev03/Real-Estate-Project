@@ -15,30 +15,37 @@ if (isset($_POST['submit_password'])) {
 
     $uid = $_SESSION['uid'];
 
-    if (!empty($old_pass) && !empty($new_pass1) && !empty($new_pass2) && $new_pass1 == $new_pass2) {
-        $sql = "SELECT upass FROM user WHERE uid = '$uid'";
-        $result = mysqli_query($con, $sql);
-        $row = mysqli_fetch_assoc($result);
+    if (!empty($old_pass) && !empty($new_pass1) && !empty($new_pass2)) {
+        if (strlen($new_pass1) < 6) {
+            $error = "<p class='alert alert-warning'>Password must be at least 6 characters long</p>";
+        } 
+        elseif ($new_pass1 != $new_pass2) {
+            $error = "<p class='alert alert-warning'>New passwords do not match</p>";
+        } else {
+            $sql = "SELECT upass FROM user WHERE uid = '$uid'";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_assoc($result);
 
-        if ($row) {
-            $current_pass = $row['upass'];
+            if ($row) {
+                $current_pass = $row['upass'];
 
-            if ($current_pass == $old_pass) {
-                $sql = "UPDATE user SET upass = '$new_pass1' WHERE uid = '$uid'";
-                $result = mysqli_query($con, $sql);
-                if ($result) {
-                    $msg = "<p class='alert alert-success'>Password changed successfully</p>";
+                if ($current_pass == $old_pass) {
+                    $sql = "UPDATE user SET upass = '$new_pass1' WHERE uid = '$uid'";
+                    $result = mysqli_query($con, $sql);
+                    if ($result) {
+                        $msg = "<p class='alert alert-success'>Password changed successfully</p>";
+                    } else {
+                        $error = "<p class='alert alert-warning'>Password not updated successfully</p>";
+                    }
                 } else {
-                    $error = "<p class='alert alert-warning'>Password not updated successfully</p>";
+                    $error = "<p class='alert alert-warning'>Old password is incorrect</p>";
                 }
             } else {
-                $error = "<p class='alert alert-warning'>Old password is incorrect</p>";
+                $error = "<p class='alert alert-warning'>User not found</p>";
             }
-        } else {
-            $error = "<p class='alert alert-warning'>User not found</p>";
         }
     } else {
-        $error = "<p class='alert alert-warning'>Please fill all the fields and ensure passwords match</p>";
+        $error = "<p class='alert alert-warning'>Please fill all the fields</p>";
     }
 }
 
@@ -47,12 +54,16 @@ if (isset($_POST['submit_phone'])) {
     $uid = $_SESSION['uid'];
 
     if (!empty($new_phone)) {
-        $sql = "UPDATE user SET uphone = '$new_phone' WHERE uid = '$uid'";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            $msg = "<p class='alert alert-success'>Phone number changed successfully</p>";
+        if (!preg_match('/^\d{10}$/', $new_phone)) {
+            $error = "<p class='alert alert-warning'>Phone number must be exactly 10 digits</p>";
         } else {
-            $error = "<p class='alert alert-warning'>Phone number not updated successfully</p>";
+            $sql = "UPDATE user SET uphone = '$new_phone' WHERE uid = '$uid'";
+            $result = mysqli_query($con, $sql);
+            if ($result) {
+                $msg = "<p class='alert alert-success'>Phone number changed successfully</p>";
+            } else {
+                $error = "<p class='alert alert-warning'>Phone number not updated successfully</p>";
+            }
         }
     } else {
         $error = "<p class='alert alert-warning'>Please enter a new phone number</p>";
