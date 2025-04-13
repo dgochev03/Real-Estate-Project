@@ -120,17 +120,17 @@ if (isset($_POST['add'])) {
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Total Floors</label>
-                    <input type="text" name="totalfl" class="form-control" required>
+                    <input type="number" name="totalfl" class="form-control" required>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Price (EUR)</label>
-                    <input type="text" name="price" class="form-control" required>
+                    <input type="number" name="price" class="form-control" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label">Area Size (sq.m.)</label>
-                    <input type="text" name="asize" class="form-control" required>
+                    <input type="number" name="asize" class="form-control" required>
                 </div>
             </div>
             <div class="row">
@@ -160,6 +160,43 @@ if (isset($_POST['add'])) {
     <?php include("include/footer.php"); ?>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+            document.querySelector("form").addEventListener("submit", function (e) {
+                const title = document.querySelector('input[name="title"]').value.trim();
+                const numberOfRooms = document.querySelector('input[name="number_of_rooms"]').value;
+                const bath = document.querySelector('input[name="bath"]').value;
+                const floor = document.querySelector('input[name="floor"]').value;
+                const totalfl = document.querySelector('input[name="totalfl"]').value;
+                const price = document.querySelector('input[name="price"]').value;
+                const asize = document.querySelector('input[name="asize"]').value;
+                const city = document.querySelector('input[name="city"]').value;
+                const loc = document.querySelector('input[name="loc"]').value;
+
+                let errors = [];
+
+                if (title.length < 5)
+                    errors.push("Title must be at least 5 characters long.");
+                if (isNaN(numberOfRooms) || numberOfRooms < 1 || numberOfRooms > 10)
+                    errors.push("Number of rooms must be between 1 and 10.");
+                if (isNaN(bath) || bath < 1 || bath > 10)
+                    errors.push("Number of bathrooms must be between 1 and 10.");
+                if (isNaN(price) || price <= 0)
+                    errors.push("Price must be a positive number.");
+                if (isNaN(asize) || asize <= 0)
+                    errors.push("Area size must be a positive number.");
+                if (!city)
+                    errors.push("City is required.");
+                if (!loc)
+                    errors.push("Address is required.");
+                if (!floor || !totalfl)
+                    errors.push("Floor and total floors are required.");
+
+                if (errors.length > 0) {
+                    e.preventDefault();
+                    alert(errors.join("\n"));
+                }
+            });
+        </script>
 </body>
 
 </html>
